@@ -30,7 +30,11 @@ public class ReservationService {
         return reservationRepository.save(reservation);
     }
 
-    public List<Reservation> findReservationsByUser(User user) {
-        return reservationRepository.findByUser(user);
+
+
+
+    public List<Reservation> findAllReservationsByEvent(Long eventId) {
+        List<Reservation> reservations = reservationRepository.findByEventId(eventId);
+        return  reservations;
     }
 }

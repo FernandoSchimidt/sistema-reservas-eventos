@@ -8,6 +8,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/api/reservations")
 public class ReservationController {
@@ -27,5 +29,11 @@ public class ReservationController {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
         }
     }
-    
+
+@GetMapping("/{eventId}")
+    public ResponseEntity<List<Reservation>> getAllReservationById(@PathVariable Long eventId){
+        List<Reservation> reservations = reservationService.findAllReservationsByEvent(eventId);
+        return ResponseEntity.status(HttpStatus.ACCEPTED).body(reservations);
+}
+
 }
