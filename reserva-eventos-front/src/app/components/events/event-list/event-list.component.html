@@ -1,0 +1,26 @@
+<div class="new-event">
+  <button routerLink="/events-form">Novo Evento</button>
+</div>
+
+<div class="container">
+  @for (event of events; track $index) {
+  <div class="card">
+    <div class="card-body">
+      <h5 class="card-title">{{ event.name }}</h5>
+      <h6 class="card-subtitle mb-2 text-muted">
+        {{ event.date | date }} | {{ event.location }}
+      </h6>
+      <p class="card-text">{{ event.description }}</p>
+      <p class="card-text">
+        <small class="text-muted">Capacidade: {{ event.capacity }}</small>
+      </p>
+      <p class="card-text">
+        <small class="text-muted"
+          >Assentos reservados: {{ event.reservedSeats }}</small
+        >
+      </p>
+    </div>
+    <button (click)="eventDetails(event.id)">Detalhes</button>
+  </div>
+  }
+</div>

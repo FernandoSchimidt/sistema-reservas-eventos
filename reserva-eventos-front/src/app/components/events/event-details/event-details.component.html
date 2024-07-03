@@ -1,0 +1,49 @@
+<div class="container">
+  <div class="card">
+    <div class="card-body">
+      <h5 class="card-title">{{ event.name }}</h5>
+      <h6 class="card-subtitle mb-2 text-muted">
+        {{ event.date | date }} | {{ event.location }}
+      </h6>
+      <p class="card-text">{{ event.description }}</p>
+      <p class="card-text">
+        <small class="text-muted">Capacidade: {{ event.capacity }}</small>
+      </p>
+      <p class="card-text">
+        <small class="text-muted"
+          >Assentos reservados: {{ event.reservedSeats }}</small
+        >
+      </p>
+    </div>
+    <button (click)="matricular(event.id)">Matricule-se</button>
+  </div>
+
+  <div class="card">
+    <div class="card-body">
+      <h5 class="card-title">Matriculas</h5>
+      <table class="reservation-table">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Nome</th>
+            <th>Email</th>
+            <th>Ações</th>
+          </tr>
+        </thead>
+        @for (reservation of reservations; track $index) {
+
+        <tbody>
+          <td>{{ reservation.user.id }}</td>
+          <td>
+            {{ reservation.user.firstname }} {{ reservation.user.lastname }}
+          </td>
+          <td>{{ reservation.user.email }}</td>
+          <th>
+
+          </th>
+        </tbody>
+        }
+      </table>
+    </div>
+  </div>
+</div>

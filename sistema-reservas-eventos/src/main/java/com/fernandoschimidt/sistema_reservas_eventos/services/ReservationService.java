@@ -5,6 +5,8 @@ import com.fernandoschimidt.sistema_reservas_eventos.entity.Reservation;
 import com.fernandoschimidt.sistema_reservas_eventos.entity.User;
 import com.fernandoschimidt.sistema_reservas_eventos.repository.ReservationRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
@@ -17,7 +19,9 @@ public class ReservationService {
     @Autowired
     private EventService eventService;
 
-    public Reservation reserveEvent(User user, Long eventId) throws Exception {
+    public Reservation reserveEvent(Long eventId) throws Exception {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        User user = (User) authentication.getPrincipal();
         Event event = eventService.findEventById(eventId).orElseThrow(() -> new Exception("Event not found"));
         if (event.getReservedSeats() >= event.getCapacity()) {
             throw new Exception("Event is fully booked");
@@ -31,10 +35,13 @@ public class ReservationService {
     }
 
 
-
-
     public List<Reservation> findAllReservationsByEvent(Long eventId) {
         List<Reservation> reservations = reservationRepository.findByEventId(eventId);
-        return  reservations;
+        return reservations;
+    }
+
+    public List<Reservation> findallReservationsByUser(User currentUser) {
+        List<Reservation> reservations = reservationRepository.findByUser(currentUser);
+        return reservations;
     }
 }

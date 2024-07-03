@@ -11,6 +11,7 @@ import org.springframework.security.core.GrantedAuthority;
 import java.util.Collection;
 import java.util.Date;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @Getter
@@ -41,6 +42,9 @@ public class User implements UserDetails {
     @UpdateTimestamp
     @Column(name = "updated_at")
     private Date updatedAt;
+
+    @OneToMany(mappedBy = "user", fetch = FetchType.EAGER)
+    private Set<Event> events;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {

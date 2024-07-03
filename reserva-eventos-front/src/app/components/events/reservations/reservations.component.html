@@ -1,0 +1,22 @@
+<div class="container">
+  <h2>Lista de eventos matriculado</h2>
+
+  <table class="reservation-table">
+    <thead>
+      <tr>
+        <th>Nome</th>
+        <th>Descrição</th>
+        <th>Data</th>
+        <th>Local</th>
+      </tr>
+    </thead>
+    @for (reservation of reservations; track $index) {
+    <tbody>
+      <td>{{ reservation.event.name }}</td>
+      <td>{{ reservation.event.description }}</td>
+      <td>{{ reservation.event.date | date }}</td>
+      <td>{{ reservation.event.location }}</td>
+    </tbody>
+    }
+  </table>
+</div>

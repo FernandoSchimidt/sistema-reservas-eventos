@@ -1,9 +1,6 @@
 package com.fernandoschimidt.sistema_reservas_eventos.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.*;
 
 import java.time.LocalDateTime;
@@ -26,4 +23,7 @@ public class Event {
     private String location;
     private int capacity;
     private int reservedSeats = 0;
+    @ManyToOne
+    @ToString.Exclude
+    private User user;
 }

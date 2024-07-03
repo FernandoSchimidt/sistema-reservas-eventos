@@ -1,0 +1,79 @@
+<div class="event-container">
+  <div class="event-form">
+    <form [formGroup]="eventForm" (ngSubmit)="createEvent()">
+     <div class="header">
+      <h2>Novo Evento</h2>
+
+      <button routerLink="/events">Voltar</button>
+     </div>
+
+      <div class="form-group">
+        <label for="name">Nome</label>
+        <input
+          type="text"
+          id="name"
+          formControlName="name"
+          name="name"
+          required
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="description">Descrição</label>
+        <input
+          type="text"
+          formControlName="description"
+          id="description"
+          name="description"
+          required
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="date">Data</label>
+        <input
+          type="date"
+          formControlName="date"
+          id="date"
+          name="date"
+          required
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="location">Localização</label>
+        <input
+          type="text"
+          formControlName="location"
+          id="location"
+          name="location"
+          required
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="capacity">Capacidade</label>
+        <input
+          type="number"
+          formControlName="capacity"
+          id="capacity"
+          name="capacity"
+          required
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="reservedSeats">Assentos Reservados</label>
+        <input
+          type="number"
+          formControlName="reservedSeats"
+          id="reservedSeats"
+          name="reservedSeats"
+          required
+        />
+      </div>
+
+      <button type="submit">Criar</button>
+    </form>
+  </div>
+</div>

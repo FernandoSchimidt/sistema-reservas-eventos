@@ -1,0 +1,32 @@
+<div class="login-container">
+  <div class="login-form">
+    <form [formGroup]="loginForm" (ngSubmit)="login()">
+      <h2>Login</h2>
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input
+          type="email"
+          id="email"
+          formControlName="email"
+          name="email"
+          required
+        />
+      </div>
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input
+          type="password"
+          formControlName="password"
+          id="password"
+          name="password"
+          required
+        />
+      </div>
+      <button type="submit">Login</button>
+    </form>
+    <br />
+    <hr />
+    <br />
+    <button routerLink="/register" type="submit">Cadastre-se</button>
+  </div>
+</div>
